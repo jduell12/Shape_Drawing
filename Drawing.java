@@ -3,7 +3,7 @@
 import java.awt.*;
 import java.util.*;
 
-enum DrawType {scribble, oval, rectangle, polygon, line};
+enum DrawType {scribble, oval, rectangle, line};
 
 class DrawingProperties {
 	DrawType drawType;
@@ -157,5 +157,42 @@ public class Drawing {
 		void subsequentPoint (Point p) {
 			points.add(p);
 		}
+	}
+	
+	class Oval extends Shape {
+		boolean filled = false;
+		Point start; 
+		Point lastPoint;
+		Oval (Color c, boolean filled){
+			super(c);
+			lastPoint = start;
+			this.filled = filled;
+		}
+		@Override
+		void firstPoint (Point p) {
+			start = p;
+			lastPoint = p;
+		}
+		@Override
+		void draw (Graphics g) {
+			int x = Math.min(start.x, lastPoint.x);
+			int y = Math.min(start.y, lastPoint.y);
+			int w = Math.abs(start.x - lastPoint.x);
+			int h = Math.abs(start.y - lastPoint.y);
+			
+			if (filled) {
+				g.fillOval(x, y, w, h);
+			} else {
+				g.drawOval(x, y, w, h);
+			}
+		}
+		@Override 
+		void subsequentPoint(Point p) {
+			lastPoint = p;
+		}
+	}
+	
+	class Line extends Shape {
+		
 	}
 }
