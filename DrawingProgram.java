@@ -52,7 +52,63 @@ public class DrawingProgram extends JFrame{
 	
 
 	public static void main(String[] args) {
-	
+		DrawingProgram dp = new DrawingProgram();
+		Scanner keyboard = new Scanner(System.in);
+		
+		boolean continueFlag = true;
+		while(continueFlag) {
+			System.out.println("Cmds: r, o, l, s, q, ?, f, d, b, m, g");
+			String str = keyboard.next().toLowerCase();
+			if (str.length() == 0) continue;
+			
+			switch (str.charAt(0)) {
+			case 'r':
+				dp.drawing.setDrawType(DrawType.rectangle);
+				break;
+			case 'o':
+				dp.drawing.setDrawType(DrawType.oval);
+				break;
+			case 'l':
+				dp.drawing.setDrawType(DrawType.line);
+				break;
+			case 's':
+				dp.drawing.setDrawType(DrawType.scribble);
+				break;
+			case 'q':
+				continueFlag = false;
+				break;
+			case 'f':
+				dp.drawing.setFilled(true);
+				break;
+			case 'd':
+				dp.drawing.setFilled(false);
+				break;
+			case 'b':
+				dp.drawing.setColor(Color.BLUE);
+				break;
+			case 'm':
+				dp.drawing.setColor(Color.MAGENTA);
+				break;
+			case 'g':
+				dp.drawing.setColor(Color.GREEN);
+				break;
+			default: 
+				System.out.println("r - drawType = Rectangle");
+				System.out.println("o - drawType = Oval");
+				System.out.println("l - drawType = Line");
+				System.out.println("s - drawType = Scribble");
+				System.out.println("q - quit");
+				System.out.println("f - filled objects");
+				System.out.println("d - draw objects (not filled)");
+				System.out.println("b - use blue color");
+				System.out.println("m - use magenta color");
+				System.out.println("g - use green color");
+				break;
+			}
+		}
+		System.out.println("Exiting the Drawing Program");
+		dp.dispose();
+		keyboard.close();
 
 	}
 
