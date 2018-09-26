@@ -193,6 +193,25 @@ public class Drawing {
 	}
 	
 	class Line extends Shape {
+		Point start;
+		Point lastPoint;
 		
+		Line (Color c){
+			super(c);
+		}
+		@Override
+		void firstPoint (Point p) {
+			start = p;
+			lastPoint = p;
+		}
+		@Override 
+		void draw (Graphics g) {
+			g.setColor(color);
+			g.drawLine(start.x, start.y, lastPoint.x, lastPoint.y);
+		}
+		@Override
+		void subsequentPoint (Point p) {
+			lastPoint = p;
+		}
 	}
 }
