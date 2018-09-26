@@ -37,6 +37,19 @@ public class DrawingProgram extends JFrame{
 		setVisible(true);
 	}
 	
+	public void paint (Graphics g) {
+		Dimension dimen = getSize();
+		Insets insets = getInsets();
+		int top = insets.top;
+		int left = insets.left;
+		g.setColor(Color.WHITE);
+		g.fillRect(0, 0, dimen.width, dimen.height);
+		
+		drawing.draw(g);
+		String str = drawing.toString();
+		System.out.println(str);
+	}
+	
 
 	public static void main(String[] args) {
 	
