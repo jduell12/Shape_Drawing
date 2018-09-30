@@ -1,4 +1,5 @@
 
+
 import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
@@ -50,11 +51,11 @@ public class DrawingProgram extends JFrame{
 		g.fillRect(0, 0, dimen.width, dimen.height);
 		
 		drawing.draw(g);
-		g.setColor(Color.BLACK);
-		String str = drawing.toString();
-		
 		g.setColor(Color.YELLOW);
 		g.fillRect(0, top, dimen.width, 20);
+		g.setColor(Color.BLACK);
+		String str = drawing.toString();
+		g.drawString(str, left+15, top+15);
 		
 		
 	}
