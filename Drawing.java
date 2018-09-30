@@ -22,7 +22,7 @@ class DrawingProperties {
 }
 
 public class Drawing {
-
+	
 	DrawingProperties drawingProperties = new DrawingProperties(DrawType.rectangle, Color.BLUE, false);
 	ArrayList<Shape> shapeArr = new ArrayList<Shape>();
 	Shape inProgress = null;

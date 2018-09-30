@@ -5,8 +5,12 @@ import java.awt.event.*;
 import java.util.*;
 import javax.swing.*;
 
+
 public class DrawingProgram extends JFrame{
 	Drawing drawing = new Drawing ();
+	
+	Image offScreenImage = null;
+	Dimension screenDimension = null;
 	
 	class MyMouseHandler extends MouseAdapter {
 		public void mousePressed (MouseEvent e) {
