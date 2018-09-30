@@ -2,11 +2,13 @@
 
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.image.BufferedImage;
 import java.util.*;
 import javax.swing.*;
 
 
-public class DrawingProgram extends JFrame{
+public class DrawingProgram extends JFrame {
+	
 	Drawing drawing = new Drawing ();
 	
 	Image offScreenImage = null;
@@ -41,12 +43,19 @@ public class DrawingProgram extends JFrame{
 		setVisible(true);
 	}
 	
-	public void paint (Graphics g) {
+
+	public void paint (Graphics screen) {
+		
 		Dimension dimen = getSize();
+		if (offScreenImage == null || dimen.equals(screenDimension)) {
+			screenDimension = dimen;
+			offScreenImage = createImage(dimen.width, dimen.height);
+		}
+		Graphics g = offScreenImage.getGraphics();
+		
 		Insets insets = getInsets();
 		int top = insets.top;
 		int left = insets.left;
-		int right = insets.right;
 		g.setColor(Color.WHITE);
 		g.fillRect(0, 0, dimen.width, dimen.height);
 		
@@ -57,8 +66,10 @@ public class DrawingProgram extends JFrame{
 		String str = drawing.toString();
 		g.drawString(str, left+15, top+15);
 		
-		
+		screen.drawImage(offScreenImage, 0, 0, this);
 	}
+	
+	
 	
 
 	public static void main(String[] args) {

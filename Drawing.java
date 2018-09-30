@@ -1,5 +1,4 @@
 
-
 import java.awt.*;
 import java.util.*;
 
@@ -175,6 +174,7 @@ public class Drawing {
 		}
 		@Override
 		void draw (Graphics g) {
+			g.setColor(color);
 			int x = Math.min(start.x, lastPoint.x);
 			int y = Math.min(start.y, lastPoint.y);
 			int w = Math.abs(start.x - lastPoint.x);
